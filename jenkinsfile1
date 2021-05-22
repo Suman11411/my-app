@@ -1,0 +1,9 @@
+node {
+  stage('SCM Checkout') {
+      git 'https://github.com/pknowledge/my-app'
+    }
+  stage('Maven Build'){
+      def M2_HOME = tool name: 'maven-3.8.1', type: 'maven'
+      sh "${M2_HOME}/bin/mvn clean package"
+    }
+}
